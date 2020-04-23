@@ -1,17 +1,17 @@
-class Starships {
+class Vehicles {
     int count;
     String next;
     dynamic previous;
     List<Result> results;
 
-    Starships({
+    Vehicles({
         this.count,
         this.next,
         this.previous,
         this.results,
     });
 
-    factory Starships.fromJson(Map<String, dynamic> json) => Starships(
+    factory Vehicles.fromJson(Map<String, dynamic> json) => Vehicles(
         count: json["count"] == null ? null : json["count"],
         next: json["next"] == null ? null : json["next"],
         previous: json["previous"],
@@ -37,9 +37,7 @@ class Result {
     String passengers;
     String cargoCapacity;
     String consumables;
-    String hyperdriveRating;
-    String mglt;
-    String starshipClass;
+    String vehicleClass;
     List<String> pilots;
     List<String> films;
     DateTime created;
@@ -57,9 +55,7 @@ class Result {
         this.passengers,
         this.cargoCapacity,
         this.consumables,
-        this.hyperdriveRating,
-        this.mglt,
-        this.starshipClass,
+        this.vehicleClass,
         this.pilots,
         this.films,
         this.created,
@@ -78,9 +74,7 @@ class Result {
         passengers: json["passengers"] == null ? null : json["passengers"],
         cargoCapacity: json["cargo_capacity"] == null ? null : json["cargo_capacity"],
         consumables: json["consumables"] == null ? null : json["consumables"],
-        hyperdriveRating: json["hyperdrive_rating"] == null ? null : json["hyperdrive_rating"],
-        mglt: json["MGLT"] == null ? null : json["MGLT"],
-        starshipClass: json["starship_class"] == null ? null : json["starship_class"],
+        vehicleClass: json["vehicle_class"] == null ? null : json["vehicle_class"],
         pilots: json["pilots"] == null ? null : List<String>.from(json["pilots"].map((x) => x)),
         films: json["films"] == null ? null : List<String>.from(json["films"].map((x) => x)),
         created: json["created"] == null ? null : DateTime.parse(json["created"]),
@@ -99,9 +93,7 @@ class Result {
         "passengers": passengers == null ? null : passengers,
         "cargo_capacity": cargoCapacity == null ? null : cargoCapacity,
         "consumables": consumables == null ? null : consumables,
-        "hyperdrive_rating": hyperdriveRating == null ? null : hyperdriveRating,
-        "MGLT": mglt == null ? null : mglt,
-        "starship_class": starshipClass == null ? null : starshipClass,
+        "vehicle_class": vehicleClass == null ? null : vehicleClass,
         "pilots": pilots == null ? null : List<dynamic>.from(pilots.map((x) => x)),
         "films": films == null ? null : List<dynamic>.from(films.map((x) => x)),
         "created": created == null ? null : created.toIso8601String(),

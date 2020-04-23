@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-import 'Extensions/Color+HexColor.dart';
-import 'StarWarsFutures.dart';
-import 'Models/Starships.dart';
+import '../Extensions/Color+HexColor.dart';
+import '../Services/StarWarsFutures.dart';
+import '../Models/Starships.dart';
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class StarshipsList extends StatefulWidget {
+  StarshipsList({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
   _StarshipsState createState() => _StarshipsState();
 }
 
-class _StarshipsState extends State<MyHomePage> {
-  Future<Starships> fetchStarships;
+class _StarshipsState extends State<StarshipsList> {
+  Future<Starships> fetch;
 
   @override
   void initState() {
     super.initState();
-    fetchStarships = fetch();
+    fetch = fetchStarships();
   }
 
   @override
@@ -29,10 +29,14 @@ class _StarshipsState extends State<MyHomePage> {
             style: TextStyle(color: HexColor("#FFE81F")),
           ),
            backgroundColor: HexColor("#000000"),
+           leading: new IconButton(
+          icon: new Icon(Icons.keyboard_arrow_left),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         ),
         body: Center(
           child: FutureBuilder<Starships>(
-            future: fetchStarships,
+            future: fetch,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return ListView.separated(
@@ -44,8 +48,8 @@ class _StarshipsState extends State<MyHomePage> {
                       child: Container(
                         height: 50,
                         color: HexColor("#000000"),
-                        child: Center(child: Text('Entry ${item.name}',
-                                                  style: TextStyle(color: HexColor("#FFE81F")))),
+                        child: Center(child: Text('${item.name}',
+                                                  style: TextStyle(color: HexColor("#FFFFFF")))),
                       ),
                       onTap: () => Scaffold
                           .of(context)
